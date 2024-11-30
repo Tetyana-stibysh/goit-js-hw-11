@@ -10,20 +10,14 @@ export function requestFoo(param) {
     safesearch: 'true',
   });
 
-  return (
-    fetch(`${URL}?${searchParams}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(response.status);
-        }
-        return response.json();
-      })
-      // .then(data => {
-      //   const array = data.hits;
-      //   console.log(data);
-      // })
-      .catch(error => {
-        console.log(error.message);
-      })
-  );
+  return fetch(`${URL}?${searchParams}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    })
+    .catch(error => {
+      console.log(error.message);
+    });
 }

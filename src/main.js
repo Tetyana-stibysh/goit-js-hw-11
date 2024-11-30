@@ -14,13 +14,14 @@ form.addEventListener('submit', makeGallery);
 
 function makeGallery(event) {
   event.preventDefault();
-
   loader.style.display = 'block';
   const textInput = event.target.elements.text.value.trim();
+
   if (!textInput) {
     loader.style.display = 'none';
     return;
   }
+
   requestFoo(textInput)
     .then(data => {
       loader.style.display = 'none';
