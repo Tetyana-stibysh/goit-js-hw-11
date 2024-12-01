@@ -17,7 +17,5 @@ export function requestFoo(param) {
       }
       return response.json();
     })
-    .catch(error => {
-      console.log(error.message);
-    });
+    .catch(error => console.log(error.message));
 }

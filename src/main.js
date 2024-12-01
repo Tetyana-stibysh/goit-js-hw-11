@@ -9,6 +9,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const form = document.querySelector('.form-search');
 const galleryImg = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
+
 loader.style.display = 'none';
 form.addEventListener('submit', makeGallery);
 
@@ -18,6 +19,14 @@ function makeGallery(event) {
   const textInput = event.target.elements.text.value.trim();
 
   if (!textInput) {
+    iziToast.show({
+      message: 'Please fill in the search field.',
+      backgroundColor: '#EF4040',
+      messageColor: '#FAFAFB',
+      iconUrl: iconReject,
+      position: 'topRight',
+      progressBarColor: '#FFBEBE',
+    });
     loader.style.display = 'none';
     return;
   }
@@ -56,7 +65,14 @@ function makeGallery(event) {
       gallery.refresh();
     })
     .catch(error => {
-      console.log(error.message);
+      iziToast.show({
+        message: 'The site is not responding or not found',
+        backgroundColor: '#EF4040',
+        messageColor: '#FAFAFB',
+        iconUrl: iconReject,
+        position: 'topRight',
+        progressBarColor: '#FFBEBE',
+      });
     })
     .finally(() => event.target.reset());
 }
